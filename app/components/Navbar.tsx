@@ -57,7 +57,19 @@ const Navbar = () => {
                                     <Link href="/photo/" className={`block py-2 px-3 rounded-sm md:p-0 ${isActive('/photo') ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'}`} aria-current={isActive('/photo') ? 'page' : undefined}>Photos</Link>
                                 </li>
                             </>
-                        ) : ("")}
+                        ) : (
+                            <>
+                                <li>
+                                    <Link href="/user/" className={`block py-2 px-3 rounded-sm md:p-0 ${isActive('/user') ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'}`} aria-current={isActive('/user') ? 'page' : undefined}>Users</Link>
+                                </li>
+                                <li>
+                                    <Link href="/album/" className={`block py-2 px-3 rounded-sm md:p-0 ${isActive('/album') ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'}`} aria-current={isActive('/album') ? 'page' : undefined}>Albums</Link>
+                                </li>
+                                <li>
+                                    <Link href="/photo/" className={`block py-2 px-3 rounded-sm md:p-0 ${isActive('/photo') ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'}`} aria-current={isActive('/photo') ? 'page' : undefined}>Photos</Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>

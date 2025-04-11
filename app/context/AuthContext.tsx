@@ -19,7 +19,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         onAuthStateChanged(auth, (user) => setUser(user));
     }, []);
 
-    const login = () => signInWithPopup(auth, provider);
+    const login = () => {
+        provider.setCustomParameters({ prompt: "select_account" }); // helps avoid silent errors
+        signInWithPopup(auth, provider);
+    };
     const logout = () => signOut(auth);
 
     return (

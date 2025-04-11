@@ -83,7 +83,7 @@ export default function SingleUser() {
                         {albums.map((album: Album) => (
                             <tr key={album.id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <Image className="w-10 h-10 rounded-sm" src={album.photo?.url || ''} alt={album.photo?.title || 'ALBUM_IMG'}/>
+                                    <Image className="w-10 h-10 rounded-sm" src={album.photo?.url || ''} alt={album.photo?.title || 'ALBUM_IMG'} width={32} height={32} unoptimized priority />
                                 </th>
                                 <td className="px-6 py-4">
                                     {album.title || 'No Album Title'}

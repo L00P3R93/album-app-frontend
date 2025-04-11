@@ -12,7 +12,15 @@ const firebaseConfig = {
     appId: "1:191748276512:web:44b82e370a99a3b9bed745"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const auth = getAuth(app);
-export const provider = new GoogleAuthProvider();
+// Initialize Firebase Auth and get a reference to the service
+const auth = getAuth(app);
+auth.languageCode = 'en';
+
+// Google Auth Provider
+const provider = new GoogleAuthProvider();
+provider.setCustomParameters({ prompt: "select_account" }); // helps avoid silent errors
+
+export { auth, provider };

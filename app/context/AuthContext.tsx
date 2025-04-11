@@ -2,34 +2,62 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { signInWithPopup, signOut, onAuthStateChanged, User } from "@firebase/auth";
-import { auth, provider } from "../lib/firbase";
+import { auth, provider } from "@/app/lib/firebase";
 
 interface AuthContextType {
     user: User | null;
-    login: () => void;
-    logout: () => void;
+    login: () => Promise<void>;
+    logout: () => Promise<void>;
+    loading: boolean;
 };
 
-const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext<AuthContextType>({
+    user: null,
+    login: async () => {},
+    logout: async () => {},
+    loading: true,
+});
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => setUser(user));
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+            setLoading(false);
+        });
+        return () => unsubscribe();
     }, []);
 
-    const login = () => {
-        provider.setCustomParameters({ prompt: "select_account" }); // helps avoid silent errors
-        signInWithPopup(auth, provider);
+    const login = async () => {
+        try {
+            await signInWithPopup(auth, provider);
+        } catch (error) {
+            console.error("Error logging in:", error);
+            throw error;
+        }
     };
-    const logout = () => signOut(auth);
+    const logout = async () => {
+        try {
+            await signOut(auth);
+        } catch (error) {
+            console.error("Error logging out:", error);
+            throw error;
+        }
+    }
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, loading }}>
             {children}
         </AuthContext.Provider>
     );
 }
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error("useAuth must be used within an AuthProvider");
+    }
+    return context;
+}

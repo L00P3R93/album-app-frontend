@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { fetchPhotos } from "@/app/services/photoService";
 import Loader from "@/app/components/Loader";
 import Card from "@/app/components/Card";
-import {Photo, User} from "@/app/types";
+import { Photo } from "@/app/types";
 
 
 const PhotoPage = () => {

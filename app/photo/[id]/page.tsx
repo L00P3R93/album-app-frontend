@@ -41,7 +41,7 @@ export default function SinglePhoto() {
             }
         }
         loadPhoto();
-    }, []);
+    }, [id]);
 
     const handleSave = async () => {
         if (!photo) return;

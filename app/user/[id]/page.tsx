@@ -48,7 +48,7 @@ export default function SingleUser() {
     const albums = singleUser.albums || [];
 
     return (
-        <div className="p-20">
+        <div className="mt-20 p-4">
             <Card
                 title={userName}
                 description={`Albums Owned: ${albumCount}`}

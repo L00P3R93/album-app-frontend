@@ -43,7 +43,7 @@ export default function SingleAlbum() {
     const albumTitle = album.title || 'No Album title';
 
     return (
-        <div className="p-20">
+        <div className="mt-20 p-4">
             <Card
                 title={albumTitle}
                 description={`Created by: ${userName}`}

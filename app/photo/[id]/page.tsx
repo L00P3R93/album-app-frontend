@@ -68,7 +68,7 @@ export default function SinglePhoto() {
     const userName = photo.album.user.name || 'No User Name';
 
     return (
-        <div className="p-20">
+        <div className="mt-20 p-4">
             <Card
                 title={title}
                 description={`Album: ${albumTitle} | User: ${userName}`}

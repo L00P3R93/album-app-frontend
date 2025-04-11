@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({ title, description, onClick, showButton = f
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
             {imageUrl.length > 0 ? (
                 <div>
-                    <Image className="rounded-t-lg album-photo" src={imageUrl} alt={title} />
+                    <Image className="rounded-t-lg album-photo" src={imageUrl} alt={title} width={500} height={200} unoptimized />
                 </div>
             ) : ("")}
             <div className="p-5">
